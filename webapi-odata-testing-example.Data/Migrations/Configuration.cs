@@ -1,3 +1,4 @@
+using System;
 using System.Data.Entity.Migrations;
 using Example.Data.Models;
 
@@ -42,6 +43,23 @@ namespace Example.Data.Migrations
                             Model = "Coupe",
                             Year = 1932,
                             Driver = new Driver { Id = 3, Name = "George Lucas" }
+                    }
+                    );
+
+            context.Races.AddOrUpdate( race => race.Id,
+                    new Race
+                    {
+                            Id = 1,
+                            Name = "The Goldbrick 50",
+                            Laps = 50,
+                            StartDateTime = new DateTime( 2016, 1, 15, 11, 00, 00, DateTimeKind.Local )
+                    },
+                    new Race
+                    {
+                            Id = 2,
+                            Name = "The Mudders Milk 200",
+                            Laps = 200,
+                            StartDateTime = new DateTime( 2016, 5, 1, 14, 30, 00, DateTimeKind.Local )
                     }
                     );
         }
