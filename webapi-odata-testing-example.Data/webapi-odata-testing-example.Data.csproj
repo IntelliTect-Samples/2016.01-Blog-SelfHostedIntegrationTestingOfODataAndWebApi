@@ -80,6 +80,9 @@
     <Compile Include="Models\RaceResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RaceContext.cs" />
+    <Compile Include="Services\CarService.cs" />
+    <Compile Include="Services\DataServiceBase.cs" />
+    <Compile Include="Services\ICarService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
