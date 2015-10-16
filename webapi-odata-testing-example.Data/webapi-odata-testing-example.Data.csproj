@@ -57,9 +57,14 @@
     <Compile Include="Migrations\201510161914155_AddDriverClass.Designer.cs">
       <DependentUpon>201510161914155_AddDriverClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510162036039_AddRaceClass.cs" />
+    <Compile Include="Migrations\201510162036039_AddRaceClass.Designer.cs">
+      <DependentUpon>201510162036039_AddRaceClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\Race.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RaceContext.cs" />
   </ItemGroup>
@@ -73,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510161914155_AddDriverClass.resx">
       <DependentUpon>201510161914155_AddDriverClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510162036039_AddRaceClass.resx">
+      <DependentUpon>201510162036039_AddRaceClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

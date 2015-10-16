@@ -8,5 +8,7 @@ namespace webapi_odata_testing_example.Data
         public DbSet<Car> Cars { get; set; }
 
         public DbSet<Driver> Drivers { get; set; }
+
+        public DbSet<Race> Races { get; set; } 
     }
 }
