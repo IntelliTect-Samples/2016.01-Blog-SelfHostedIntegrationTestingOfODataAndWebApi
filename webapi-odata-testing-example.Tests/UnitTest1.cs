@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace webapi_odata_testing_example.Tests
+namespace Example.Tests
 {
     [TestClass]
     public class UnitTest1

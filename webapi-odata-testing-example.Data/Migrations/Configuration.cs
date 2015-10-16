@@ -1,20 +1,22 @@
-namespace webapi_odata_testing_example.Data.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity.Migrations;
+using Example.Data.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<webapi_odata_testing_example.Data.RaceContext>
+namespace Example.Data.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<RaceContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(webapi_odata_testing_example.Data.RaceContext context)
+        protected override void Seed(RaceContext context)
         {
             //  This method will be called after migrating to the latest version.
+
+            context.Cars.AddOrUpdate( car => car.Name,
+                new Car {  }
+                );
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.

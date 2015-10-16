@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace webapi_odata_testing_example.Data.Models
+namespace Example.Data.Models
 {
     public class Car
     {

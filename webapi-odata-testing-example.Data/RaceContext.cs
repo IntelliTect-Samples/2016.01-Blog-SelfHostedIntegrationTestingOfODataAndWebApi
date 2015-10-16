@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using webapi_odata_testing_example.Data.Models;
+using Example.Data.Models;
 
-namespace webapi_odata_testing_example.Data
+namespace Example.Data
 {
     public class RaceContext : DbContext
     {

@@ -6,7 +6,7 @@
     <ProjectGuid>{F258A072-7FB5-4BE0-B9D6-5E96F46D8766}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>webapi_odata_testing_example.Tests</RootNamespace>
+    <RootNamespace>Example.Tests</RootNamespace>
     <AssemblyName>webapi-odata-testing-example.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
