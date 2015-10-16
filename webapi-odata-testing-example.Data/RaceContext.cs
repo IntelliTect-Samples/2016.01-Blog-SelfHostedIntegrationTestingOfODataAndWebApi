@@ -10,5 +10,7 @@ namespace webapi_odata_testing_example.Data
         public DbSet<Driver> Drivers { get; set; }
 
         public DbSet<Race> Races { get; set; } 
+
+        public DbSet<RaceResult> RaceResults { get; set; }
     }
 }
