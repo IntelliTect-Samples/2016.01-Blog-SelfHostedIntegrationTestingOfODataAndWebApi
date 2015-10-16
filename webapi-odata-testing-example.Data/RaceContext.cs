@@ -5,6 +5,8 @@ namespace webapi_odata_testing_example.Data
 {
     public class RaceContext : DbContext
     {
-         public DbSet<Car> Cars { get; set; }
+        public DbSet<Car> Cars { get; set; }
+
+        public DbSet<Driver> Drivers { get; set; }
     }
 }
