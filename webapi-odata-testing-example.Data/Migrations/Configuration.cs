@@ -8,26 +8,42 @@ namespace Example.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(RaceContext context)
+        protected override void Seed( RaceContext context )
         {
             //  This method will be called after migrating to the latest version.
 
-            context.Cars.AddOrUpdate( car => car.Name,
-                new Car {  }
-                );
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Cars.AddOrUpdate( car => car.Id,
+                    new Car
+                    {
+                            Id = 1,
+                            Name = "007",
+                            Make = "Aston Martin",
+                            Year = 1964,
+                            Model = "DB5",
+                            Driver = new Driver { Id = 1, Name = "James Bond" }
+                    },
+                    new Car
+                    {
+                            Id = 2,
+                            Name = "The Bandit",
+                            Make = "Pontiac",
+                            Year = 1977,
+                            Model = "Trans Am",
+                            Driver = new Driver { Id = 2, Name = "Burt Reynolds" }
+                    },
+                    new Car
+                    {
+                            Id = 3,
+                            Name = "American Grafffiti",
+                            Make = "Ford",
+                            Model = "Coupe",
+                            Year = 1932,
+                            Driver = new Driver { Id = 3, Name = "George Lucas" }
+                    }
+                    );
         }
     }
 }

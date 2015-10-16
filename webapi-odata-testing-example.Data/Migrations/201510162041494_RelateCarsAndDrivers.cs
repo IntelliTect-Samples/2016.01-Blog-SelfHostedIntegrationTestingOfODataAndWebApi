@@ -1,8 +1,7 @@
-namespace webapi_odata_testing_example.Data.Migrations
+using System.Data.Entity.Migrations;
+
+namespace Example.Data.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class RelateCarsAndDrivers : DbMigration
     {
         public override void Up()
