@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201510162036039_AddRaceClass.Designer.cs">
       <DependentUpon>201510162036039_AddRaceClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510162041494_RelateCarsAndDrivers.cs" />
+    <Compile Include="Migrations\201510162041494_RelateCarsAndDrivers.Designer.cs">
+      <DependentUpon>201510162041494_RelateCarsAndDrivers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Driver.cs" />
@@ -81,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510162036039_AddRaceClass.resx">
       <DependentUpon>201510162036039_AddRaceClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510162041494_RelateCarsAndDrivers.resx">
+      <DependentUpon>201510162041494_RelateCarsAndDrivers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

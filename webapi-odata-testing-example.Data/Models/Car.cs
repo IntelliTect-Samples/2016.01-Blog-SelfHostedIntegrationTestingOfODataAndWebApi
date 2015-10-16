@@ -14,5 +14,7 @@ namespace webapi_odata_testing_example.Data.Models
         public string Make { get; set; }
 
         public string Model { get; set; }
+
+        public virtual Driver Driver { get; set; }
     }
 }
