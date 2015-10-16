@@ -15,6 +15,6 @@ namespace Example.Data.Models
 
         public string Model { get; set; }
 
-        public virtual Driver Driver { get; set; }
+        public virtual Driver Owner { get; set; }
     }
 }
