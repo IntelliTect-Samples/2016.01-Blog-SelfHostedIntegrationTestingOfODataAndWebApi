@@ -82,7 +82,9 @@
     <Compile Include="RaceContext.cs" />
     <Compile Include="Services\CarService.cs" />
     <Compile Include="Services\DataServiceBase.cs" />
+    <Compile Include="Services\DriverService.cs" />
     <Compile Include="Services\ICarService.cs" />
+    <Compile Include="Services\IDriverService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
