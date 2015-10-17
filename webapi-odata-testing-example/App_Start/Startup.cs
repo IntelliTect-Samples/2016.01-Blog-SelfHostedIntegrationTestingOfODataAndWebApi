@@ -1,8 +1,9 @@
-﻿using System.Reflection;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
 using Example;
+using Example.Data.Models;
+using Example.Data.Services;
 using Microsoft.OData.Edm;
 using Microsoft.Owin;
 using Ninject;
@@ -36,6 +37,7 @@ namespace Example
                                   Namespace = "Example",
                                   ContainerName = "RaceContainer"
                           };
+            builder.EntitySet<Race>( "Races" );
 
             return builder.GetEdmModel();
         }
@@ -43,7 +45,8 @@ namespace Example
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
-            kernel.Load( Assembly.GetExecutingAssembly() );
+            kernel.Bind<IRaceService>()
+                    .To<RaceService>();
             return kernel;
         }
     }

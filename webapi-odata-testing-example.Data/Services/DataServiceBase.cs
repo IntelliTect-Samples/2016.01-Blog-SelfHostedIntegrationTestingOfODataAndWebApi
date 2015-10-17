@@ -4,14 +4,14 @@ namespace Example.Data.Services
 {
     public class DataServiceBase : IDisposable
     {
-        private bool _disposed;
+        private bool _Disposed;
 
-        public DataServiceBase()
+        protected DataServiceBase()
         {
             Db = new RaceContext();
         }
 
-        protected RaceContext Db { get; set; }
+        protected RaceContext Db { get; }
 
         public void Dispose()
         {
@@ -26,7 +26,7 @@ namespace Example.Data.Services
 
         protected virtual void Dispose( bool disposing )
         {
-            if ( _disposed )
+            if ( _Disposed )
             {
                 return;
             }
@@ -36,7 +36,7 @@ namespace Example.Data.Services
                 Db.Dispose();
             }
 
-            _disposed = true;
+            _Disposed = true;
         }
     }
 }
