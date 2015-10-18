@@ -11,7 +11,7 @@ namespace Example.Data.Services
             Db = new RaceContext();
         }
 
-        protected RaceContext Db { get; }
+        protected RaceContext Db { get; private set; }
 
         public void Dispose()
         {

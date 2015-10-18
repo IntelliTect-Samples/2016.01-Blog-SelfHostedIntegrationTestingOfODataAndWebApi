@@ -16,7 +16,7 @@ namespace Example.Controllers
             RaceService = raceService;
         }
 
-        private IRaceService RaceService { get; }
+        private IRaceService RaceService { get; set; }
 
         [EnableQuery]
         public IQueryable<Race> Get()
