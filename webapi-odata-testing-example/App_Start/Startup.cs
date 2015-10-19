@@ -39,6 +39,7 @@ namespace Example
                           };
             builder.EntitySet<Race>( "Races" );
             builder.EntitySet<Driver>( "Drivers" );
+            builder.EntitySet<Car>( "Cars" );
 
             return builder.GetEdmModel();
         }
@@ -48,6 +49,7 @@ namespace Example
             var kernel = new StandardKernel();
             kernel.Bind<IRaceService>().To<RaceService>();
             kernel.Bind<IDriverService>().To<DriverService>();
+            kernel.Bind<ICarService>().To<CarService>();
             return kernel;
         }
     }
