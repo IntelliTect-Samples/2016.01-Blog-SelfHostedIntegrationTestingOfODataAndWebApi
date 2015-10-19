@@ -35,9 +35,10 @@ namespace Example
             var builder = new ODataConventionModelBuilder
                           {
                                   Namespace = "Example",
-                                  ContainerName = "RaceContainer"
+                                  ContainerName = "ExampleContainer"
                           };
             builder.EntitySet<Race>( "Races" );
+            builder.EntitySet<Driver>( "Drivers" );
 
             return builder.GetEdmModel();
         }
@@ -45,8 +46,8 @@ namespace Example
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
-            kernel.Bind<IRaceService>()
-                    .To<RaceService>();
+            kernel.Bind<IRaceService>().To<RaceService>();
+            kernel.Bind<IDriverService>().To<DriverService>();
             return kernel;
         }
     }

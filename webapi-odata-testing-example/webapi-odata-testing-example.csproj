@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\DriversController.cs" />
     <Compile Include="Controllers\RacesController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
