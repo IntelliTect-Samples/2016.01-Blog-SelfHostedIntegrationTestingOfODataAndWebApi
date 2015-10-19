@@ -40,6 +40,7 @@ namespace Example
             builder.EntitySet<Race>( "Races" );
             builder.EntitySet<Driver>( "Drivers" );
             builder.EntitySet<Car>( "Cars" );
+            builder.EntitySet<RaceResult>( "RaceResults" );
 
             return builder.GetEdmModel();
         }
@@ -50,6 +51,7 @@ namespace Example
             kernel.Bind<IRaceService>().To<RaceService>();
             kernel.Bind<IDriverService>().To<DriverService>();
             kernel.Bind<ICarService>().To<CarService>();
+            kernel.Bind<IRaceResultsService>().To<RaceResultsService>();
             return kernel;
         }
     }
