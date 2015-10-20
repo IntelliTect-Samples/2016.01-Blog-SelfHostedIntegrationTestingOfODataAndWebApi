@@ -146,7 +146,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ODataClient.tt</DependentUpon>
     </Compile>
-    <Compile Include="OwinSelfHostConfig.cs" />
     <Compile Include="SimpleGetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
