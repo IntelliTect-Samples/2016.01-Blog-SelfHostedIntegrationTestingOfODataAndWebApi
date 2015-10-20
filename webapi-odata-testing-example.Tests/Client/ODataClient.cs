@@ -8,13 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 10/19/2015 11:31:06 AM
+// Generation date: 10/19/2015 4:12:25 PM
 namespace Example.Tests.Client.Example.Data.Models
 {
     /// <summary>
     /// There are no comments for RaceSingle in the schema.
     /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("RaceSingle")]
     public partial class RaceSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Race>
     {
         /// <summary>
@@ -43,7 +42,6 @@ namespace Example.Tests.Client.Example.Data.Models
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    [global::Microsoft.OData.Client.OriginalNameAttribute("Race")]
     public partial class Race : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
@@ -65,7 +63,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Id in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Id")]
         public int Id
         {
             get
@@ -88,7 +85,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Name in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Name")]
         public string Name
         {
             get
@@ -111,7 +107,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Laps in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Laps")]
         public int Laps
         {
             get
@@ -134,7 +129,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property StartDateTime in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("StartDateTime")]
         public global::System.DateTimeOffset StartDateTime
         {
             get
@@ -174,7 +168,6 @@ namespace Example.Tests.Client.Example.Data.Models
     /// <summary>
     /// There are no comments for DriverSingle in the schema.
     /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("DriverSingle")]
     public partial class DriverSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Driver>
     {
         /// <summary>
@@ -199,7 +192,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Cars in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Cars")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::Example.Tests.Client.Example.Data.Models.Car> Cars
         {
             get
@@ -225,7 +217,6 @@ namespace Example.Tests.Client.Example.Data.Models
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    [global::Microsoft.OData.Client.OriginalNameAttribute("Driver")]
     public partial class Driver : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
@@ -243,7 +234,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Id in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Id")]
         public int Id
         {
             get
@@ -266,7 +256,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Name in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Name")]
         public string Name
         {
             get
@@ -289,7 +278,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Cars in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Cars")]
         public global::Microsoft.OData.Client.DataServiceCollection<global::Example.Tests.Client.Example.Data.Models.Car> Cars
         {
             get
@@ -329,7 +317,6 @@ namespace Example.Tests.Client.Example.Data.Models
     /// <summary>
     /// There are no comments for CarSingle in the schema.
     /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("CarSingle")]
     public partial class CarSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<Car>
     {
         /// <summary>
@@ -354,7 +341,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Owner in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Owner")]
         public global::Example.Tests.Client.Example.Data.Models.DriverSingle Owner
         {
             get
@@ -380,7 +366,6 @@ namespace Example.Tests.Client.Example.Data.Models
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    [global::Microsoft.OData.Client.OriginalNameAttribute("Car")]
     public partial class Car : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
@@ -400,7 +385,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Id in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Id")]
         public int Id
         {
             get
@@ -423,7 +407,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Name in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Name")]
         public string Name
         {
             get
@@ -446,7 +429,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Year in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Year")]
         public int Year
         {
             get
@@ -469,7 +451,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Make in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Make")]
         public string Make
         {
             get
@@ -492,7 +473,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Model in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Model")]
         public string Model
         {
             get
@@ -515,7 +495,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Owner in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Owner")]
         public global::Example.Tests.Client.Example.Data.Models.Driver Owner
         {
             get
@@ -555,7 +534,6 @@ namespace Example.Tests.Client.Example.Data.Models
     /// <summary>
     /// There are no comments for RaceResultSingle in the schema.
     /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("RaceResultSingle")]
     public partial class RaceResultSingle : global::Microsoft.OData.Client.DataServiceQuerySingle<RaceResult>
     {
         /// <summary>
@@ -580,7 +558,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Race in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Race")]
         public global::Example.Tests.Client.Example.Data.Models.RaceSingle Race
         {
             get
@@ -602,7 +579,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Car in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Car")]
         public global::Example.Tests.Client.Example.Data.Models.CarSingle Car
         {
             get
@@ -624,7 +600,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Driver in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Driver")]
         public global::Example.Tests.Client.Example.Data.Models.DriverSingle Driver
         {
             get
@@ -650,7 +625,6 @@ namespace Example.Tests.Client.Example.Data.Models
     /// Id
     /// </KeyProperties>
     [global::Microsoft.OData.Client.Key("Id")]
-    [global::Microsoft.OData.Client.OriginalNameAttribute("RaceResult")]
     public partial class RaceResult : global::Microsoft.OData.Client.BaseEntityType, global::System.ComponentModel.INotifyPropertyChanged
     {
         /// <summary>
@@ -672,7 +646,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Id in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Id")]
         public int Id
         {
             get
@@ -695,7 +668,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property FinishTimeSpan in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("FinishTimeSpan")]
         public global::System.Nullable<global::System.TimeSpan> FinishTimeSpan
         {
             get
@@ -718,7 +690,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property DidFinish in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("DidFinish")]
         public bool DidFinish
         {
             get
@@ -741,7 +712,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property DidStart in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("DidStart")]
         public bool DidStart
         {
             get
@@ -764,7 +734,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property LapsCompleted in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("LapsCompleted")]
         public global::System.Nullable<int> LapsCompleted
         {
             get
@@ -787,7 +756,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property PitStops in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("PitStops")]
         public global::System.Nullable<int> PitStops
         {
             get
@@ -810,7 +778,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Race in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Race")]
         public global::Example.Tests.Client.Example.Data.Models.Race Race
         {
             get
@@ -833,7 +800,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Car in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Car")]
         public global::Example.Tests.Client.Example.Data.Models.Car Car
         {
             get
@@ -856,7 +822,6 @@ namespace Example.Tests.Client.Example.Data.Models
         /// There are no comments for Property Driver in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Driver")]
         public global::Example.Tests.Client.Example.Data.Models.Driver Driver
         {
             get
@@ -997,7 +962,6 @@ namespace Example.Tests.Client.Example
     /// <summary>
     /// There are no comments for ExampleContainer in the schema.
     /// </summary>
-    [global::Microsoft.OData.Client.OriginalNameAttribute("ExampleContainer")]
     public partial class ExampleContainer : global::Microsoft.OData.Client.DataServiceContext
     {
         /// <summary>
@@ -1042,21 +1006,12 @@ namespace Example.Tests.Client.Example
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
         protected string ResolveNameFromType(global::System.Type clientType)
         {
-            global::Microsoft.OData.Client.OriginalNameAttribute originalNameAttribute = (global::Microsoft.OData.Client.OriginalNameAttribute)global::System.Linq.Enumerable.SingleOrDefault(global::Microsoft.OData.Client.Utility.GetCustomAttributes(clientType, typeof(global::Microsoft.OData.Client.OriginalNameAttribute), true));
             if (clientType.Namespace.Equals("Example.Tests.Client.Example.Data.Models", global::System.StringComparison.Ordinal))
             {
-                if (originalNameAttribute != null)
-                {
-                    return string.Concat("Example.Data.Models.", originalNameAttribute.OriginalName);
-                }
                 return string.Concat("Example.Data.Models.", clientType.Name);
             }
             if (clientType.Namespace.Equals("Example.Tests.Client.Example", global::System.StringComparison.Ordinal))
             {
-                if (originalNameAttribute != null)
-                {
-                    return string.Concat("Example.", originalNameAttribute.OriginalName);
-                }
                 return string.Concat("Example.", clientType.Name);
             }
             return null;
@@ -1065,7 +1020,6 @@ namespace Example.Tests.Client.Example
         /// There are no comments for Races in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Races")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::Example.Tests.Client.Example.Data.Models.Race> Races
         {
             get
@@ -1083,7 +1037,6 @@ namespace Example.Tests.Client.Example
         /// There are no comments for Drivers in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Drivers")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::Example.Tests.Client.Example.Data.Models.Driver> Drivers
         {
             get
@@ -1101,7 +1054,6 @@ namespace Example.Tests.Client.Example
         /// There are no comments for Cars in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("Cars")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::Example.Tests.Client.Example.Data.Models.Car> Cars
         {
             get
@@ -1119,7 +1071,6 @@ namespace Example.Tests.Client.Example
         /// There are no comments for RaceResults in the schema.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        [global::Microsoft.OData.Client.OriginalNameAttribute("RaceResults")]
         public global::Microsoft.OData.Client.DataServiceQuery<global::Example.Tests.Client.Example.Data.Models.RaceResult> RaceResults
         {
             get

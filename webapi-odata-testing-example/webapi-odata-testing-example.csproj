@@ -163,6 +163,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ModelBuilder.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\DriversController.cs" />

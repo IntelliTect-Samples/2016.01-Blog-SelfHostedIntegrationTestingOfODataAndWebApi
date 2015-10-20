@@ -1,10 +1,7 @@
 ﻿using System.Web.Http;
-using System.Web.OData.Builder;
 using System.Web.OData.Extensions;
 using Example;
-using Example.Data.Models;
 using Example.Data.Services;
-using Microsoft.OData.Edm;
 using Microsoft.Owin;
 using Ninject;
 using Ninject.Web.Common.OwinHost;
@@ -20,9 +17,9 @@ namespace Example
         public void Configuration( IAppBuilder app )
         {
             var config = new HttpConfiguration();
-            config.MapODataServiceRoute( "odataRoute",
+            config.MapODataServiceRoute( "OdataRoute",
                     null,
-                    GetEdmModel() );
+                    ModelBuilder.GetEdmModel() );
 
 
             config.EnsureInitialized();
@@ -30,20 +27,6 @@ namespace Example
             app.UseNinjectMiddleware( CreateKernel ).UseNinjectWebApi( config );
         }
 
-        private static IEdmModel GetEdmModel()
-        {
-            var builder = new ODataConventionModelBuilder
-                          {
-                                  Namespace = "Example",
-                                  ContainerName = "ExampleContainer"
-                          };
-            builder.EntitySet<Race>( "Races" );
-            builder.EntitySet<Driver>( "Drivers" );
-            builder.EntitySet<Car>( "Cars" );
-            builder.EntitySet<RaceResult>( "RaceResults" );
-
-            return builder.GetEdmModel();
-        }
 
         private static IKernel CreateKernel()
         {

@@ -3,22 +3,19 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
-using System.Web.OData.Routing;
 using Example.Data.Models;
 using Example.Data.Services;
 
 namespace Example.Controllers
 {
-
-    [ODataRoutePrefix( "Cars" )]
-    public class CarsController : ODataController   
+    public class CarsController : ODataController
     {
-        private ICarService CarService { get; set; }
-
-        public CarsController(ICarService carService)
+        public CarsController( ICarService carService )
         {
             CarService = carService;
         }
+
+        private ICarService CarService { get; set; }
 
         [EnableQuery]
         public IQueryable<Car> Get()

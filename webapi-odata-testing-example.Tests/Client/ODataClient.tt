@@ -19,7 +19,7 @@ public static class Configuration
 	public const string TargetLanguage = "CSharp";
 
 	// This flag indicates whether to enable naming alias. The value must be set to true or false.
-	public const bool EnableNamingAlias = true;
+	public const bool EnableNamingAlias = false;
 
 	// This flag indicates whether to ignore unexpected elements and attributes in the metadata document and generate
 	// the client code if any. The value must be set to true or false.

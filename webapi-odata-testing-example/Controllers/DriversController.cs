@@ -9,7 +9,7 @@ using Example.Data.Services;
 
 namespace Example.Controllers
 {
-    [ODataRoutePrefix( "Drivers" )]
+    //[ODataRoutePrefix( "Drivers" )]
     public class DriversController : ODataController
     {
         public DriversController( IDriverService driverService )
