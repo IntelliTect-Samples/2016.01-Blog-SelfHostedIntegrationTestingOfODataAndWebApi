@@ -40,12 +40,12 @@ namespace Example.Controllers
             {
                 return BadRequest( ModelState );
             }
-            await CarService.Create( car );
-            if ( car.Id == 0 )
+            Car inserted = await CarService.Create( car );
+            if ( inserted.Id == 0 )
             {
                 return BadRequest();
             }
-            return Created( car );
+            return Created( inserted );
         }
 
         public async Task<IHttpActionResult> Put( [FromODataUri] int key, Car car )

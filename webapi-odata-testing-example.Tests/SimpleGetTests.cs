@@ -19,23 +19,12 @@ namespace Example.Tests
     {
         private const string BaseAddress = "http://localhost:19001/";
 
-        private static Fixture Fixture
-        {
-            get
-            {
-                var fixture = new Fixture();
-                fixture.Behaviors.Remove( new ThrowingRecursionBehavior() );
-                fixture.Behaviors.Add( new OmitOnRecursionBehavior() );
-                return fixture;
-            }
-        }
-
         [TestMethod]
         public void WhenGettingAllCarsItShouldReturnData()
         {
             // Arrange
             var service = new Mock<ICarService>();
-            service.Setup( m => m.FindAll() ).Returns( Fixture.CreateMany<Car>( 10 ).AsQueryable() );
+            service.Setup( m => m.FindAll() ).Returns( TestHelpers.Fixture.CreateMany<Car>( 10 ).AsQueryable() );
 
             // Bind our mock with Ninject
             var kernel = new StandardKernel();
@@ -61,7 +50,7 @@ namespace Example.Tests
         {
             // Arrange
             var service = new Mock<ICarService>();
-            service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( Fixture.Create<Car>() );
+            service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( TestHelpers.Fixture.Create<Car>() );
 
             var kernel = new StandardKernel();
             kernel.Bind<ICarService>().ToConstant( service.Object );
