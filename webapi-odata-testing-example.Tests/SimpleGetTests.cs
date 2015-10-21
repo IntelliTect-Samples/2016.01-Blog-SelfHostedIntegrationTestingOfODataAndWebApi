@@ -17,8 +17,7 @@ namespace Example.Tests
     [TestClass]
     public class SimpleGetTests
     {
-        //private const string BaseAddress = "http://localhost:19001/";
-        private const string BaseAddress = "http://DCLLEN5QA-2:19001/";
+        private const string BaseAddress = "http://localhost:19001/";
 
         private static Fixture Fixture
         {
@@ -64,7 +63,6 @@ namespace Example.Tests
             var service = new Mock<ICarService>();
             service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( Fixture.Create<Car>() );
 
-            // Bind our mock with Ninject
             var kernel = new StandardKernel();
             kernel.Bind<ICarService>().ToConstant( service.Object );
             var container = new ExampleContainer( new Uri( BaseAddress ) );
@@ -87,33 +85,30 @@ namespace Example.Tests
         {
             // Arrange
             var service = new Mock<ICarService>();
-            service.Setup(m => m.Find(It.IsAny<int>())).ReturnsAsync( null );
+            service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( null );
 
-            // Bind our mock with Ninject
             var kernel = new StandardKernel();
-            kernel.Bind<ICarService>().ToConstant(service.Object);
-            var container = new ExampleContainer(new Uri(BaseAddress));
+            kernel.Bind<ICarService>().ToConstant( service.Object );
+            var container = new ExampleContainer( new Uri( BaseAddress ) );
 
-            using (WebApp.Start(BaseAddress, app => TestHelpers.ConfigureWebApi(app, kernel))
+            using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) )
                     )
             {
                 // Act 
                 try
                 {
-                    container.Cars.ByKey(50).GetValue();
+                    container.Cars.ByKey( 50 ).GetValue();
                 }
                 catch ( DataServiceQueryException exception )
                 {
                     // Assert 
-                    Assert.IsNotNull(exception.InnerException);
-                    Assert.IsInstanceOfType( exception.InnerException, typeof(DataServiceClientException)  );
-                    Assert.AreEqual( 404, ((DataServiceClientException)exception.InnerException).StatusCode);
+                    Assert.IsNotNull( exception.InnerException );
+                    Assert.IsInstanceOfType( exception.InnerException, typeof (DataServiceClientException) );
+                    Assert.AreEqual( 404, ( (DataServiceClientException) exception.InnerException ).StatusCode );
                     return;
                 }
-                
-                Assert.Fail("Exception not caught.");
 
-                
+                Assert.Fail( "Exception not caught." );
             }
         }
     }
