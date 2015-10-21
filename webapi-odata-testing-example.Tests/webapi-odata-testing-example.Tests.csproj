@@ -148,6 +148,7 @@
     </Compile>
     <Compile Include="SimpleGetTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\webapi-odata-testing-example.Data\webapi-odata-testing-example.Data.csproj">

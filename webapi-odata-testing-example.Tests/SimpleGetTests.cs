@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
-using System.Web.OData.Extensions;
-using Example.Data.Models;
 using Example.Data.Services;
 using Example.Tests.Client.Example;
+using Example.Tests.Client.Example.Data.Models;
+using Microsoft.OData.Client;
 using Microsoft.Owin.Hosting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Ninject;
-using Ninject.Web.Common.OwinHost;
-using Ninject.Web.WebApi.OwinHost;
-using Owin;
 using Ploeh.AutoFixture;
+using Car = Example.Data.Models.Car;
 
 namespace Example.Tests
 {
     [TestClass]
     public class SimpleGetTests
     {
-        private const string BaseAddress = "http://localhost:19001/";
+        //private const string BaseAddress = "http://localhost:19001/";
+        private const string BaseAddress = "http://DCLLEN5QA-2:19001/";
 
         private static Fixture Fixture
         {
@@ -39,11 +37,13 @@ namespace Example.Tests
             // Arrange
             var service = new Mock<ICarService>();
             service.Setup( m => m.FindAll() ).Returns( Fixture.CreateMany<Car>( 10 ).AsQueryable() );
+
+            // Bind our mock with Ninject
             var kernel = new StandardKernel();
             kernel.Bind<ICarService>().ToConstant( service.Object );
             var container = new ExampleContainer( new Uri( BaseAddress ) );
 
-            using ( WebApp.Start( BaseAddress, app => ConfigureWebApi( app, kernel ) )
+            using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) )
                     )
             {
                 // Act 
@@ -57,20 +57,64 @@ namespace Example.Tests
             }
         }
 
-        private void ConfigureWebApi( IAppBuilder app, IKernel kernel )
+        [TestMethod]
+        public void WhenGettingASingleCarItReturnsTheCar()
         {
-            var config = new HttpConfiguration
-                         {
-                                 IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always
-                         };
+            // Arrange
+            var service = new Mock<ICarService>();
+            service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( Fixture.Create<Car>() );
 
-            config.MapODataServiceRoute( "TestOdataRoute",
-                    null,
-                    ModelBuilder.GetEdmModel() );
+            // Bind our mock with Ninject
+            var kernel = new StandardKernel();
+            kernel.Bind<ICarService>().ToConstant( service.Object );
+            var container = new ExampleContainer( new Uri( BaseAddress ) );
 
-            config.EnsureInitialized();
-            app.UseNinjectMiddleware( () => kernel );
-            app.UseNinjectWebApi( config );
+            using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) )
+                    )
+            {
+                // Act 
+                Client.Example.Data.Models.Car response = container.Cars.ByKey( 5 ).GetValue();
+
+
+                // Assert 
+                Assert.IsNotNull( response );
+                service.Verify( m => m.Find( It.Is<int>( i => i == 5 ) ), Times.Once );
+            }
+        }
+
+        [TestMethod]
+        public void WhenGettingACarTheDoesntExistItReturnsNotFound()
+        {
+            // Arrange
+            var service = new Mock<ICarService>();
+            service.Setup(m => m.Find(It.IsAny<int>())).ReturnsAsync( null );
+
+            // Bind our mock with Ninject
+            var kernel = new StandardKernel();
+            kernel.Bind<ICarService>().ToConstant(service.Object);
+            var container = new ExampleContainer(new Uri(BaseAddress));
+
+            using (WebApp.Start(BaseAddress, app => TestHelpers.ConfigureWebApi(app, kernel))
+                    )
+            {
+                // Act 
+                try
+                {
+                    container.Cars.ByKey(50).GetValue();
+                }
+                catch ( DataServiceQueryException exception )
+                {
+                    // Assert 
+                    Assert.IsNotNull(exception.InnerException);
+                    Assert.IsInstanceOfType( exception.InnerException, typeof(DataServiceClientException)  );
+                    Assert.AreEqual( 404, ((DataServiceClientException)exception.InnerException).StatusCode);
+                    return;
+                }
+                
+                Assert.Fail("Exception not caught.");
+
+                
+            }
         }
     }
 }
