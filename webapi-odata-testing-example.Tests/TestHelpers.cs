@@ -8,8 +8,20 @@ using Ploeh.AutoFixture;
 
 namespace Example.Tests
 {
-    static internal class TestHelpers
+    internal static class TestHelpers
     {
+        internal static Fixture Fixture
+        {
+            get
+            {
+                var fixture = new Fixture();
+                // Car->Owner->Cars recurses infinitely, so don't make specimens that do that.
+                fixture.Behaviors.Remove( new ThrowingRecursionBehavior() );
+                fixture.Behaviors.Add( new OmitOnRecursionBehavior() );
+                return fixture;
+            }
+        }
+
         internal static void ConfigureWebApi( IAppBuilder app, IKernel kernel )
         {
             var config = new HttpConfiguration
@@ -24,18 +36,6 @@ namespace Example.Tests
             config.EnsureInitialized();
             app.UseNinjectMiddleware( () => kernel );
             app.UseNinjectWebApi( config );
-        }
-
-        internal static Fixture Fixture
-        {
-            get
-            {
-                var fixture = new Fixture();
-                // Car->Owner->Cars recurses infinitely, so don't make specimens that do that.
-                fixture.Behaviors.Remove( new ThrowingRecursionBehavior() );
-                fixture.Behaviors.Add( new OmitOnRecursionBehavior() );
-                return fixture;
-            }
         }
     }
 }

@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -146,9 +147,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ODataClient.tt</DependentUpon>
     </Compile>
-    <Compile Include="SimpleGetTests.cs" />
+    <Compile Include="WhenGettingCars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimplePostTests.cs" />
+    <Compile Include="WhenPostingCars.cs" />
     <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Example.Data.Interfaces;
 using Example.Data.Services;
 using Example.Tests.Client.Example;
 using Example.Tests.Client.Example.Data.Models;
@@ -15,12 +16,12 @@ using Car = Example.Data.Models.Car;
 namespace Example.Tests
 {
     [TestClass]
-    public class SimpleGetTests
+    public class WhenGettingCars
     {
         private const string BaseAddress = "http://localhost:19001/";
 
         [TestMethod]
-        public void WhenGettingAllCarsItShouldReturnData()
+        public void ItShouldReturnData()
         {
             // Arrange
             var service = new Mock<ICarService>();
@@ -46,7 +47,7 @@ namespace Example.Tests
         }
 
         [TestMethod]
-        public void WhenGettingASingleCarItReturnsTheCar()
+        public void ByKeyShouldReturnASingleCar()
         {
             // Arrange
             var service = new Mock<ICarService>();
@@ -70,7 +71,7 @@ namespace Example.Tests
         }
 
         [TestMethod]
-        public void WhenGettingACarTheDoesntExistItReturnsNotFound()
+        public void NonExistentCarReturnsNotFound()
         {
             // Arrange
             var service = new Mock<ICarService>();
@@ -92,8 +93,8 @@ namespace Example.Tests
                 {
                     // Assert 
                     Assert.IsNotNull( exception.InnerException );
-                    Assert.IsInstanceOfType( exception.InnerException, typeof (DataServiceClientException) );
-                    Assert.AreEqual( 404, ( (DataServiceClientException) exception.InnerException ).StatusCode );
+                    var inner = (DataServiceClientException) exception.InnerException;
+                    Assert.AreEqual( 404, inner.StatusCode );
                     return;
                 }
 

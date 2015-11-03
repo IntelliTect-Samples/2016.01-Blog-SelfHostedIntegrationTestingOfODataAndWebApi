@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Example.Data.Interfaces;
 using Example.Data.Models;
 
 namespace Example.Data.Services

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
+using Example.Data.Interfaces;
 using Example.Data.Services;
 using Example.Tests.Client.Example;
 using Example.Tests.Client.Example.Data.Models;
@@ -14,7 +15,7 @@ using Ploeh.AutoFixture;
 namespace Example.Tests
 {
     [TestClass]
-    public class SimplePostTests
+    public class WhenPostingCars
     {
         private const string BaseAddress = "http://localhost:19001/";
 
@@ -38,8 +39,7 @@ namespace Example.Tests
             kernel.Bind<ICarService>().ToConstant( service.Object );
             var container = new ExampleContainer( new Uri( BaseAddress ) );
 
-            using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) )
-                    )
+            using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) ) )
             {
                 // Act 
                 container.AddToCars( newCar );

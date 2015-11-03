@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.OData.Extensions;
 using Example;
+using Example.Data.Interfaces;
 using Example.Data.Services;
 using Microsoft.Owin;
 using Ninject;
@@ -14,6 +15,7 @@ namespace Example
 {
     public class Startup
     {
+        // ReSharper disable once UnusedMember.Global
         public void Configuration( IAppBuilder app )
         {
             var config = new HttpConfiguration();

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Routing;
+using Example.Data.Interfaces;
 using Example.Data.Models;
 using Example.Data.Services;
 

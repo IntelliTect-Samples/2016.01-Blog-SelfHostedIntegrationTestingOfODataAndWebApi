@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -83,10 +84,10 @@
     <Compile Include="Services\CarService.cs" />
     <Compile Include="Services\DataServiceBase.cs" />
     <Compile Include="Services\DriverService.cs" />
-    <Compile Include="Services\ICarService.cs" />
-    <Compile Include="Services\IDriverService.cs" />
-    <Compile Include="Services\IRaceResultsService.cs" />
-    <Compile Include="Services\IRaceService.cs" />
+    <Compile Include="Interfaces\ICarService.cs" />
+    <Compile Include="Interfaces\IDriverService.cs" />
+    <Compile Include="Interfaces\IRaceResultsService.cs" />
+    <Compile Include="Interfaces\IRaceService.cs" />
     <Compile Include="Services\RaceResultsService.cs" />
     <Compile Include="Services\RaceService.cs" />
   </ItemGroup>
@@ -114,6 +115,7 @@
       <DependentUpon>201510162153559_ChangeCarDriverToOwner.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
