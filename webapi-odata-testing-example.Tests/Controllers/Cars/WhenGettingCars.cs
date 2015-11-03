@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Example.Data.Interfaces;
-using Example.Data.Services;
 using Example.Tests.Client.Example;
 using Example.Tests.Client.Example.Data.Models;
 using Microsoft.OData.Client;
@@ -13,7 +12,7 @@ using Ninject;
 using Ploeh.AutoFixture;
 using Car = Example.Data.Models.Car;
 
-namespace Example.Tests
+namespace Example.Tests.Controllers.Cars
 {
     [TestClass]
     public class WhenGettingCars

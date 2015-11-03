@@ -147,10 +147,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ODataClient.tt</DependentUpon>
     </Compile>
-    <Compile Include="WhenGettingCars.cs" />
+    <Compile Include="Controllers\Cars\WhenGettingCars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WhenPostingCars.cs" />
+    <Compile Include="Controllers\Cars\WhenPostingCars.cs" />
     <Compile Include="TestHelpers.cs" />
+    <Compile Include="Controllers\Cars\WhenPuttingCars.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\webapi-odata-testing-example.Data\webapi-odata-testing-example.Data.csproj">

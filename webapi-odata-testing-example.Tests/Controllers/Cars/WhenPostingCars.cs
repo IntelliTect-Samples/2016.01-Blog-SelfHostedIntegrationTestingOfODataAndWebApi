@@ -11,7 +11,7 @@ using Moq;
 using Ninject;
 using Ploeh.AutoFixture;
 
-namespace Example.Tests
+namespace Example.Tests.Controllers.Cars
 {
     [TestClass]
     public class WhenPostingCars
