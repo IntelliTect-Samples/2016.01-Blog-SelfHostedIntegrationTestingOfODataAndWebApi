@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Net;
 using Example.Data.Interfaces;
-using Example.Data.Services;
 using Example.Tests.Client.Example;
 using Example.Tests.Client.Example.Data.Models;
 using Microsoft.OData.Client;
@@ -25,9 +24,10 @@ namespace Example.Tests
             // Arrange
             var newCar = new Car
                          {
-                                 Make = "Nissan",
-                                 Model = "Skyline GTR",
-                                 Year = 1996
+                            Name = "Hakosuka",
+                            Make = "Nissan",
+                            Model = "Skyline GTR",
+                            Year = 1996
                          };
 
             var service = new Mock<ICarService>();

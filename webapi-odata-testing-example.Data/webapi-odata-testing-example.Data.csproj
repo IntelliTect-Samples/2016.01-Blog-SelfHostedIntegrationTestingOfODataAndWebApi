@@ -74,6 +74,10 @@
     <Compile Include="Migrations\201510162153559_ChangeCarDriverToOwner.Designer.cs">
       <DependentUpon>201510162153559_ChangeCarDriverToOwner.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511031904428_AddNullableConstraintsToCars.cs" />
+    <Compile Include="Migrations\201511031904428_AddNullableConstraintsToCars.Designer.cs">
+      <DependentUpon>201511031904428_AddNullableConstraintsToCars.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Driver.cs" />
@@ -113,6 +117,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510162153559_ChangeCarDriverToOwner.resx">
       <DependentUpon>201510162153559_ChangeCarDriverToOwner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201511031904428_AddNullableConstraintsToCars.resx">
+      <DependentUpon>201511031904428_AddNullableConstraintsToCars.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
