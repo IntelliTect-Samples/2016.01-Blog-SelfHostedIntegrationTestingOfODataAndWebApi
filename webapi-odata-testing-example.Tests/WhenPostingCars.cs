@@ -19,15 +19,15 @@ namespace Example.Tests
         private const string BaseAddress = "http://localhost:19001/";
 
         [TestMethod]
-        public void HappyPath()
+        public void ItSavesNewCar()
         {
             // Arrange
             var newCar = new Car
                          {
-                            Name = "Hakosuka",
-                            Make = "Nissan",
-                            Model = "Skyline GTR",
-                            Year = 1996
+                                 Name = "Hakosuka",
+                                 Make = "Nissan",
+                                 Model = "Skyline GTR",
+                                 Year = 1996
                          };
 
             var service = new Mock<ICarService>();
@@ -52,6 +52,42 @@ namespace Example.Tests
                 Assert.AreEqual( (int) HttpStatusCode.Created, response.StatusCode );
                 service.Verify( m => m.Create( It.IsAny<Data.Models.Car>() ), Times.Once );
                 Assert.IsNotNull( actual );
+            }
+        }
+
+
+        [TestMethod]
+        public void IfMissingRequiredFieldsItReturnsBadRequest()
+        {
+            // Arrange
+            var badCar = new Car
+                         {
+                                 Name = "Empty"
+                         };
+
+            var service = new Mock<ICarService>();
+            service.Setup( m => m.Create( It.IsAny<Data.Models.Car>() ) )
+                    .ReturnsAsync( TestHelpers.Fixture.Create<Data.Models.Car>() );
+
+            var container = new ExampleContainer( new Uri( BaseAddress ) );
+
+            using ( WebApp.Start( BaseAddress, TestHelpers.ConfigureWebApi ) )
+            {
+                // Act
+                try
+                {
+                    container.AddToCars( badCar );
+                    container.SaveChanges();
+                }
+                catch ( DataServiceRequestException exception )
+                {
+                    var inner = exception.InnerException as DataServiceClientException;
+                    Assert.IsNotNull( inner );
+                    Assert.AreEqual( (int) HttpStatusCode.BadRequest, inner.StatusCode );
+                    return;
+                }
+                // Assert
+                Assert.Fail( "Exception not caught." );
             }
         }
     }

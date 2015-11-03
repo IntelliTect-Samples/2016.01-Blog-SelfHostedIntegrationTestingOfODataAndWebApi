@@ -22,6 +22,21 @@ namespace Example.Tests
             }
         }
 
+
+        /// <summary>
+        /// Configures the app with the Ninject kernel with the default IoC bindings.
+        /// </summary>
+        /// <param name="app">An <see cref="IAppBuilder"/> reference.</param>
+        internal static void ConfigureWebApi( IAppBuilder app )
+        {
+            ConfigureWebApi( app, Startup.CreateKernel() );
+        }
+
+        /// <summary>
+        /// Configures the app with a custom Ninject kernel.
+        /// </summary>
+        /// <param name="app">An <see cref="IAppBuilder"/> reference.</param>
+        /// <param name="kernel">The custom Ninject <see cref="IKernel"/>.</param>
         internal static void ConfigureWebApi( IAppBuilder app, IKernel kernel )
         {
             var config = new HttpConfiguration

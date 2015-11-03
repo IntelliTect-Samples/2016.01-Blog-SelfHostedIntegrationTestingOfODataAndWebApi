@@ -30,7 +30,7 @@ namespace Example
         }
 
 
-        private static IKernel CreateKernel()
+        public static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
             kernel.Bind<IRaceService>().To<RaceService>();
