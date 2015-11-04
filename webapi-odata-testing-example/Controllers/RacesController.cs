@@ -3,14 +3,11 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
-using System.Web.OData.Routing;
 using Example.Data.Interfaces;
 using Example.Data.Models;
-using Example.Data.Services;
 
 namespace Example.Controllers
 {
-    //[ODataRoutePrefix( "Races" )]
     public class RacesController : ODataController
     {
         public RacesController( IRaceService raceService )
@@ -18,7 +15,7 @@ namespace Example.Controllers
             RaceService = raceService;
         }
 
-        private IRaceService RaceService { get; }
+        private IRaceService RaceService { get; set; }
 
         [EnableQuery]
         public IQueryable<Race> Get()

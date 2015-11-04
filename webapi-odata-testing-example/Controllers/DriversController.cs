@@ -3,14 +3,11 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.OData;
-using System.Web.OData.Routing;
 using Example.Data.Interfaces;
 using Example.Data.Models;
-using Example.Data.Services;
 
 namespace Example.Controllers
 {
-    //[ODataRoutePrefix( "Drivers" )]
     public class DriversController : ODataController
     {
         public DriversController( IDriverService driverService )
@@ -18,7 +15,7 @@ namespace Example.Controllers
             DriverService = driverService;
         }
 
-        private IDriverService DriverService { get; }
+        private IDriverService DriverService { get; set; }
 
 
         [EnableQuery]

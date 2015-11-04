@@ -5,7 +5,6 @@ using System.Web.Http;
 using System.Web.OData;
 using Example.Data.Interfaces;
 using Example.Data.Models;
-using Example.Data.Services;
 
 namespace Example.Controllers
 {
