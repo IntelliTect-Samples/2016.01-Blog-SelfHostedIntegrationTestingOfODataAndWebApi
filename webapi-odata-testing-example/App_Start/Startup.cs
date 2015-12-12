@@ -1,10 +1,11 @@
 ﻿using System.Web.Http;
 using System.Web.OData.Extensions;
 using Example;
-using Example.Data.Interfaces;
 using Example.Data.Services;
 using Microsoft.Owin;
 using Ninject;
+using Ninject.Extensions.Conventions;
+using Ninject.Web.Common;
 using Ninject.Web.Common.OwinHost;
 using Ninject.Web.WebApi.OwinHost;
 using Owin;
@@ -33,10 +34,13 @@ namespace Example
         public static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
-            kernel.Bind<IRaceService>().To<RaceService>();
-            kernel.Bind<IDriverService>().To<DriverService>();
-            kernel.Bind<ICarService>().To<CarService>();
-            kernel.Bind<IRaceResultsService>().To<RaceResultsService>();
+            kernel.Bind(
+                    x =>
+                            x.FromAssembliesMatching( "webapi-odata-testing-example.Data" )
+                                    .SelectAllClasses()
+                                    .InNamespaceOf<CarService>()
+                                    .BindAllInterfaces()
+                                    .Configure( binding => binding.InRequestScope() ) );
             return kernel;
         }
     }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generation date: 10/19/2015 4:12:25 PM
+// Generation date: 12/12/2015 10:02:18 AM
 namespace Example.Tests.Client.Example.Data.Models
 {
     /// <summary>
@@ -372,13 +372,19 @@ namespace Example.Tests.Client.Example.Data.Models
         /// Create a new Car object.
         /// </summary>
         /// <param name="ID">Initial value of Id.</param>
+        /// <param name="name">Initial value of Name.</param>
         /// <param name="year">Initial value of Year.</param>
+        /// <param name="make">Initial value of Make.</param>
+        /// <param name="model">Initial value of Model.</param>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.OData.Client.Design.T4", "2.4.0")]
-        public static Car CreateCar(int ID, int year)
+        public static Car CreateCar(int ID, string name, int year, string make, string model)
         {
             Car car = new Car();
             car.Id = ID;
+            car.Name = name;
             car.Year = year;
+            car.Make = make;
+            car.Model = model;
             return car;
         }
         /// <summary>
@@ -1147,10 +1153,10 @@ namespace Example.Tests.Client.Example
           <PropertyRef Name=""Id"" />
         </Key>
         <Property Name=""Id"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" />
+        <Property Name=""Name"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Year"" Type=""Edm.Int32"" Nullable=""false"" />
-        <Property Name=""Make"" Type=""Edm.String"" />
-        <Property Name=""Model"" Type=""Edm.String"" />
+        <Property Name=""Make"" Type=""Edm.String"" Nullable=""false"" />
+        <Property Name=""Model"" Type=""Edm.String"" Nullable=""false"" />
         <NavigationProperty Name=""Owner"" Type=""Example.Data.Models.Driver"" />
       </EntityType>
       <EntityType Name=""RaceResult"">

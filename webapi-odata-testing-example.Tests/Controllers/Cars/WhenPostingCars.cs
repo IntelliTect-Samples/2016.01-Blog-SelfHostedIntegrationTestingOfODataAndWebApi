@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
-using Example.Data.Interfaces;
+using Example.Data.Services;
 using Example.Tests.Client.Example;
 using Example.Tests.Client.Example.Data.Models;
 using Microsoft.OData.Client;
@@ -23,12 +23,12 @@ namespace Example.Tests.Controllers.Cars
         {
             // Arrange
             var newCar = new Car
-                         {
-                                 Name = "Hakosuka",
-                                 Make = "Nissan",
-                                 Model = "Skyline GTR",
-                                 Year = 1996
-                         };
+            {
+                Name = "Hakosuka",
+                Make = "Nissan",
+                Model = "Skyline GTR",
+                Year = 1996
+            };
 
             var service = new Mock<ICarService>();
             service.Setup( m => m.Create( It.IsAny<Data.Models.Car>() ) )
@@ -43,7 +43,7 @@ namespace Example.Tests.Controllers.Cars
             {
                 // Act 
                 container.AddToCars( newCar );
-                ChangeOperationResponse response = container.SaveChanges().Cast<ChangeOperationResponse>().First();
+                var response = container.SaveChanges().Cast<ChangeOperationResponse>().First();
                 var entityDescriptor = (EntityDescriptor) response.Descriptor;
                 var actual =
                         (Car) entityDescriptor.Entity;
@@ -61,17 +61,20 @@ namespace Example.Tests.Controllers.Cars
         {
             // Arrange
             var badCar = new Car
-                         {
-                                 Name = "Empty"
-                         };
+            {
+                Name = "Empty"
+            };
 
             var service = new Mock<ICarService>();
             service.Setup( m => m.Create( It.IsAny<Data.Models.Car>() ) )
                     .ReturnsAsync( TestHelpers.Fixture.Create<Data.Models.Car>() );
 
+            // Bind our mock with Ninject
+            var kernel = new StandardKernel();
+            kernel.Bind<ICarService>().ToConstant( service.Object );
             var container = new ExampleContainer( new Uri( BaseAddress ) );
 
-            using ( WebApp.Start( BaseAddress, TestHelpers.ConfigureWebApi ) )
+            using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) ) )
             {
                 // Act
                 try

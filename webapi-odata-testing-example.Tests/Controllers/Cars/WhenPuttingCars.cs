@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Net;
-using Example.Data.Interfaces;
+using Example.Data.Services;
 using Example.Tests.Client.Example;
 using Example.Tests.Client.Example.Data.Models;
 using Microsoft.OData.Client;
