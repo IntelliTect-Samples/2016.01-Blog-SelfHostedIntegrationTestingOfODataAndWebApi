@@ -5,7 +5,6 @@ using System.Web.Http;
 using System.Web.OData;
 using Example.Data.Interfaces;
 using Example.Data.Models;
-using Example.Data.Services;
 
 namespace Example.Controllers
 {
@@ -16,7 +15,7 @@ namespace Example.Controllers
             DriverService = driverService;
         }
 
-        private IDriverService DriverService { get; set; }
+        private IDriverService DriverService { get; }
 
 
         [EnableQuery]
@@ -27,7 +26,7 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Get( [FromODataUri] int key )
         {
-            Driver result = await DriverService.Find( key );
+            var result = await DriverService.Find( key );
 
             if ( result == null )
             {
@@ -58,7 +57,7 @@ namespace Example.Controllers
                 return BadRequest();
             }
 
-            Driver original = await DriverService.Find( key );
+            var original = await DriverService.Find( key );
 
             if ( original == null )
             {
@@ -72,14 +71,14 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Delete( [FromODataUri] int key )
         {
-            Driver deletable = await DriverService.Find( key );
+            var deletable = await DriverService.Find( key );
 
             if ( deletable == null )
             {
                 return NotFound();
             }
 
-            int recordsDeleted = await DriverService.Delete( deletable );
+            var recordsDeleted = await DriverService.Delete( deletable );
 
             if ( recordsDeleted <= 0 )
             {

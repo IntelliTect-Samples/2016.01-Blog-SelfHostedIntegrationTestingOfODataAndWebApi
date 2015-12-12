@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Net;
 using Example.Data.Interfaces;
-using Example.Data.Services;
 using Example.Tests.Client.Example;
 using Example.Tests.Client.Example.Data.Models;
 using Microsoft.OData.Client;
@@ -36,10 +35,10 @@ namespace Example.Tests.Controllers.Cars
             using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) ) )
             {
                 // Act
-                Car target = container.Cars.ByKey( storedCar.Id ).GetValue();
+                var target = container.Cars.ByKey( storedCar.Id ).GetValue();
                 target.Name = TestHelpers.Fixture.Create<string>();
                 container.UpdateObject( target );
-                ChangeOperationResponse response =
+                var response =
                         container.SaveChanges( SaveChangesOptions.ReplaceOnUpdate )
                                 .Cast<ChangeOperationResponse>()
                                 .First();
@@ -73,7 +72,7 @@ namespace Example.Tests.Controllers.Cars
                 try
                 {
                     // Act
-                    Car first = container.Cars.Execute().First();
+                    var first = container.Cars.Execute().First();
                     first.Make = "FOO";
                     container.UpdateObject( first );
                     container.SaveChanges( SaveChangesOptions.ReplaceOnUpdate );

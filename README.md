@@ -7,8 +7,8 @@ Usage:
 1. Read blog post: [link here]
 2. Clone with VS2015
 3. Build
-4. Run Tests
-5. Run Update-Database in the Package Manager Console
+4. Run Update-Database in the Package Manager Console to generate DB and seed with data.
+5. Run Tests
 6. Start with Ctrl-F5 and query with Postman
 
 Note:

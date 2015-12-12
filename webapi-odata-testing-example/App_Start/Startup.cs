@@ -1,7 +1,6 @@
 ﻿using System.Web.Http;
 using System.Web.OData.Extensions;
 using Example;
-using Example.Data.Services;
 using Microsoft.Owin;
 using Ninject;
 using Ninject.Extensions.Conventions;

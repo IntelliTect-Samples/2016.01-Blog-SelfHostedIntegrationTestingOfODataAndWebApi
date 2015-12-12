@@ -5,7 +5,6 @@ using System.Web.Http;
 using System.Web.OData;
 using Example.Data.Interfaces;
 using Example.Data.Models;
-using Example.Data.Services;
 
 namespace Example.Controllers
 {
@@ -16,7 +15,7 @@ namespace Example.Controllers
             ResultsService = resultsService;
         }
 
-        private IRaceResultsService ResultsService { get; set; }
+        private IRaceResultsService ResultsService { get; }
 
         [EnableQuery]
         public IQueryable<RaceResult> Get()
@@ -26,7 +25,7 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Get( [FromODataUri] int key )
         {
-            RaceResult result = await ResultsService.Find( key );
+            var result = await ResultsService.Find( key );
 
             if ( result == null )
             {
@@ -57,7 +56,7 @@ namespace Example.Controllers
                 return BadRequest();
             }
 
-            RaceResult original = await ResultsService.Find( key );
+            var original = await ResultsService.Find( key );
 
             if ( original == null )
             {
@@ -71,14 +70,14 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Delete( [FromODataUri] int key )
         {
-            RaceResult deletable = await ResultsService.Find( key );
+            var deletable = await ResultsService.Find( key );
 
             if ( deletable == null )
             {
                 return NotFound();
             }
 
-            int recordsDeleted = await ResultsService.Delete( deletable );
+            var recordsDeleted = await ResultsService.Delete( deletable );
 
             if ( recordsDeleted <= 0 )
             {
