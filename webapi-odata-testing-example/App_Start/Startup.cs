@@ -36,9 +36,8 @@ namespace Example
             var kernel = new StandardKernel();
             kernel.Bind(
                     x =>
-                            x.FromAssembliesMatching( "webapi-odata-testing-example.Data" )
+                            x.FromAssembliesMatching( "*.Data.dll" )
                                     .SelectAllClasses()
-                                    .InNamespaceOf<CarService>()
                                     .BindAllInterfaces()
                                     .Configure( binding => binding.InRequestScope() ) );
             return kernel;

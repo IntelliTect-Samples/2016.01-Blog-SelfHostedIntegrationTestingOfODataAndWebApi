@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Example.Data.Models;
 
-namespace Example.Data.Services
+namespace Example.Data.Interfaces
 {
     public interface IRaceService
     {
