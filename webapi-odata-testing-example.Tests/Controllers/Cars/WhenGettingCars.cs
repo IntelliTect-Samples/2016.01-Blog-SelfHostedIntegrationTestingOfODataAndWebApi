@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Example.Data.Services;
 using Example.Tests.Client.Example;
@@ -10,7 +9,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Ninject;
 using Ploeh.AutoFixture;
-using Car = Example.Data.Models.Car;
 
 namespace Example.Tests.Controllers.Cars
 {
@@ -24,7 +22,8 @@ namespace Example.Tests.Controllers.Cars
         {
             // Arrange
             var service = new Mock<ICarService>();
-            service.Setup( m => m.FindAll() ).Returns( TestHelpers.Fixture.CreateMany<Car>( 10 ).AsQueryable() );
+            service.Setup( m => m.FindAll() )
+                    .Returns( TestHelpers.Fixture.CreateMany<Data.Models.Car>( 10 ).AsQueryable() );
 
             // Bind our mock with Ninject
             var kernel = new StandardKernel();
@@ -35,7 +34,7 @@ namespace Example.Tests.Controllers.Cars
                     )
             {
                 // Act 
-                IEnumerable<Client.Example.Data.Models.Car> response =
+                var response =
                         container.Cars.Execute();
 
 
@@ -50,7 +49,8 @@ namespace Example.Tests.Controllers.Cars
         {
             // Arrange
             var service = new Mock<ICarService>();
-            service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( TestHelpers.Fixture.Create<Car>() );
+            service.Setup( m => m.Find( It.IsAny<int>() ) )
+                    .ReturnsAsync( TestHelpers.Fixture.Create<Data.Models.Car>() );
 
             var kernel = new StandardKernel();
             kernel.Bind<ICarService>().ToConstant( service.Object );
@@ -60,7 +60,7 @@ namespace Example.Tests.Controllers.Cars
                     )
             {
                 // Act 
-                Client.Example.Data.Models.Car response = container.Cars.ByKey( 5 ).GetValue();
+                var response = container.Cars.ByKey( 5 ).GetValue();
 
 
                 // Assert 

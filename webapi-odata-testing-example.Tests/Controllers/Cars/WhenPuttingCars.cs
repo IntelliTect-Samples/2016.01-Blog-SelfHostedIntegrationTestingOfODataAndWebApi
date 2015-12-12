@@ -19,7 +19,7 @@ namespace Example.Tests.Controllers.Cars
         private const string BaseAddress = "http://localhost:19002/";
 
         [TestMethod]
-        public void IsUpdatesTheCar()
+        public void ItUpdatesTheCar()
         {
             // Arrange
             var storedCar = TestHelpers.Fixture.Create<Data.Models.Car>();

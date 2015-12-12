@@ -148,6 +148,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ODataClient.tt</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\Cars\WhenDeletingCars.cs" />
     <Compile Include="Controllers\Cars\WhenGettingCars.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\Cars\WhenPostingCars.cs" />
