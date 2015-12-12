@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Example.Data.Models;
 
-namespace Example.Data.Interfaces
+namespace Example.Data.Services
 {
     public interface IDriverService
     {
