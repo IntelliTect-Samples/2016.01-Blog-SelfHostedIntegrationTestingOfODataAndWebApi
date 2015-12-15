@@ -25,7 +25,7 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Get( [FromODataUri] int key )
         {
-            var result = await CarService.Find( key );
+            Car result = await CarService.Find( key );
 
             if ( result == null )
             {
@@ -40,7 +40,7 @@ namespace Example.Controllers
             {
                 return BadRequest( ModelState );
             }
-            var inserted = await CarService.Create( car );
+            Car inserted = await CarService.Create( car );
             if ( inserted.Id == 0 )
             {
                 return BadRequest();
@@ -56,7 +56,7 @@ namespace Example.Controllers
                 return BadRequest();
             }
 
-            var original = await CarService.Find( key );
+            Car original = await CarService.Find( key );
 
             if ( original == null )
             {
@@ -70,14 +70,14 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Delete( [FromODataUri] int key )
         {
-            var deletable = await CarService.Find( key );
+            Car deletable = await CarService.Find( key );
 
             if ( deletable == null )
             {
                 return NotFound();
             }
 
-            var recordsDeleted = await CarService.Delete( deletable );
+            int recordsDeleted = await CarService.Delete( deletable );
 
             if ( recordsDeleted <= 0 )
             {

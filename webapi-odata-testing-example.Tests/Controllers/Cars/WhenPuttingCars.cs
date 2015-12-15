@@ -10,6 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Ninject;
 using Ploeh.AutoFixture;
+using Car = Example.Data.Models.Car;
 
 namespace Example.Tests.Controllers.Cars
 {
@@ -22,10 +23,10 @@ namespace Example.Tests.Controllers.Cars
         public void ItUpdatesTheCar()
         {
             // Arrange
-            var storedCar = TestHelpers.Fixture.Create<Data.Models.Car>();
+            var storedCar = TestHelpers.Fixture.Create<Car>();
             var service = new Mock<ICarService>();
             service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( storedCar );
-            service.Setup( m => m.Update( It.IsAny<Data.Models.Car>() ) ).ReturnsAsync( storedCar );
+            service.Setup( m => m.Update( It.IsAny<Car>() ) ).ReturnsAsync( storedCar );
 
             // Bind our mock with Ninject
             var kernel = new StandardKernel();
@@ -35,15 +36,15 @@ namespace Example.Tests.Controllers.Cars
             using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) ) )
             {
                 // Act
-                var target = container.Cars.ByKey( storedCar.Id ).GetValue();
+                Client.Example.Data.Models.Car target = container.Cars.ByKey( storedCar.Id ).GetValue();
                 target.Name = TestHelpers.Fixture.Create<string>();
                 container.UpdateObject( target );
-                var response =
+                ChangeOperationResponse response =
                         container.SaveChanges( SaveChangesOptions.ReplaceOnUpdate )
                                 .Cast<ChangeOperationResponse>()
                                 .First();
                 var entityDescriptor = (EntityDescriptor) response.Descriptor;
-                var actual = (Car) entityDescriptor.Entity;
+                var actual = (Client.Example.Data.Models.Car) entityDescriptor.Entity;
 
                 // Assert
                 Assert.AreEqual( (int) HttpStatusCode.NoContent, response.StatusCode );
@@ -55,12 +56,47 @@ namespace Example.Tests.Controllers.Cars
         }
 
         [TestMethod]
+        public void IfMissingRequiredFieldsItReturnsBadRequest()
+        {
+            // Arrange
+            var storedCar = TestHelpers.Fixture.Create<Car>();
+            var service = new Mock<ICarService>();
+            service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( storedCar );
+
+            // Bind our mock with Ninject
+            var kernel = new StandardKernel();
+            kernel.Bind<ICarService>().ToConstant( service.Object );
+            var container = new ExampleContainer( new Uri( BaseAddress ) );
+
+            using ( WebApp.Start( BaseAddress, app => TestHelpers.ConfigureWebApi( app, kernel ) ) )
+            {
+                // Act
+                Client.Example.Data.Models.Car target = container.Cars.ByKey( storedCar.Id ).GetValue();
+                target.Name = null;
+                try
+                {
+                    container.UpdateObject( target );
+                    container.SaveChanges( SaveChangesOptions.ReplaceOnUpdate );
+                }
+                catch ( DataServiceRequestException exception )
+                {
+                    var inner = exception.InnerException as DataServiceClientException;
+                    Assert.IsNotNull( inner );
+                    Assert.AreEqual( (int) HttpStatusCode.BadRequest, inner.StatusCode );
+                    return;
+                }
+                // Assert
+                Assert.Fail( "Exception not caught." );
+            }
+        }
+
+        [TestMethod]
         public void IfInvalidCarItReturnsNotFound()
         {
             // Arrange
             var service = new Mock<ICarService>();
             service.Setup( m => m.FindAll() )
-                    .Returns( TestHelpers.Fixture.CreateMany<Data.Models.Car>().AsQueryable() );
+                    .Returns( TestHelpers.Fixture.CreateMany<Car>().AsQueryable() );
             service.Setup( m => m.Find( It.IsAny<int>() ) ).ReturnsAsync( null );
 
             // Bind our mock with Ninject
@@ -72,7 +108,7 @@ namespace Example.Tests.Controllers.Cars
                 try
                 {
                     // Act
-                    var first = container.Cars.Execute().First();
+                    Client.Example.Data.Models.Car first = container.Cars.Execute().First();
                     first.Make = "FOO";
                     container.UpdateObject( first );
                     container.SaveChanges( SaveChangesOptions.ReplaceOnUpdate );
@@ -82,7 +118,7 @@ namespace Example.Tests.Controllers.Cars
                     var inner = exception.InnerException as DataServiceClientException;
                     Assert.IsNotNull( inner );
                     Assert.AreEqual( (int) HttpStatusCode.NotFound, inner.StatusCode );
-                    service.Verify( x => x.Update( It.IsAny<Data.Models.Car>() ), Times.Never );
+                    service.Verify( x => x.Update( It.IsAny<Car>() ), Times.Never );
                     return;
                 }
             }

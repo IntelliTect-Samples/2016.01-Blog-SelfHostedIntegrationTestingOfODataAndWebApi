@@ -26,7 +26,7 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Get( [FromODataUri] int key )
         {
-            var result = await DriverService.Find( key );
+            Driver result = await DriverService.Find( key );
 
             if ( result == null )
             {
@@ -57,7 +57,7 @@ namespace Example.Controllers
                 return BadRequest();
             }
 
-            var original = await DriverService.Find( key );
+            Driver original = await DriverService.Find( key );
 
             if ( original == null )
             {
@@ -71,14 +71,14 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Delete( [FromODataUri] int key )
         {
-            var deletable = await DriverService.Find( key );
+            Driver deletable = await DriverService.Find( key );
 
             if ( deletable == null )
             {
                 return NotFound();
             }
 
-            var recordsDeleted = await DriverService.Delete( deletable );
+            int recordsDeleted = await DriverService.Delete( deletable );
 
             if ( recordsDeleted <= 0 )
             {

@@ -25,7 +25,7 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Get( [FromODataUri] int key )
         {
-            var result = await ResultsService.Find( key );
+            RaceResult result = await ResultsService.Find( key );
 
             if ( result == null )
             {
@@ -56,7 +56,7 @@ namespace Example.Controllers
                 return BadRequest();
             }
 
-            var original = await ResultsService.Find( key );
+            RaceResult original = await ResultsService.Find( key );
 
             if ( original == null )
             {
@@ -70,14 +70,14 @@ namespace Example.Controllers
 
         public async Task<IHttpActionResult> Delete( [FromODataUri] int key )
         {
-            var deletable = await ResultsService.Find( key );
+            RaceResult deletable = await ResultsService.Find( key );
 
             if ( deletable == null )
             {
                 return NotFound();
             }
 
-            var recordsDeleted = await ResultsService.Delete( deletable );
+            int recordsDeleted = await ResultsService.Delete( deletable );
 
             if ( recordsDeleted <= 0 )
             {
