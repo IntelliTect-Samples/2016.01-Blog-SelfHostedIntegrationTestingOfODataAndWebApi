@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi-odata-testing-example", "webapi-odata-testing-example\webapi-odata-testing-example.csproj", "{2C03FA0D-6F63-4F7F-B299-06BE89BB67D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "webapi-odata-testing-example\Web.csproj", "{2C03FA0D-6F63-4F7F-B299-06BE89BB67D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi-odata-testing-example.Tests", "webapi-odata-testing-example.Tests\webapi-odata-testing-example.Tests.csproj", "{F258A072-7FB5-4BE0-B9D6-5E96F46D8766}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "webapi-odata-testing-example.Tests\Tests.csproj", "{F258A072-7FB5-4BE0-B9D6-5E96F46D8766}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webapi-odata-testing-example.Data", "webapi-odata-testing-example.Data\webapi-odata-testing-example.Data.csproj", "{6A7B6F76-AD9B-486A-B4A7-681304B7DC18}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "webapi-odata-testing-example.Data\Data.csproj", "{6A7B6F76-AD9B-486A-B4A7-681304B7DC18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2BF00810-409F-44FD-BC69-1CB0A4B2BF0B}"
 	ProjectSection(SolutionItems) = preProject
