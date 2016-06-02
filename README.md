@@ -1,4 +1,4 @@
-# webapi-odata-testing-example
+# Self-Hosted Integration Testing Of OData and WebApi
 An example for testing OData v4 Web API controllers in a full-stack manner using the OWIN self-host.
 
 Usage:
