@@ -4,7 +4,7 @@ An example for testing OData v4 Web API controllers in a full-stack manner using
 Usage:
 ======
 
-1. Read blog post: [link here]
+1. Read blog post: [link here](http://intellitect.com/self-hosted-integration-testing-of-odata-and-webapi/)
 2. Clone with VS2015
 3. Build
 4. Run Update-Database in the Package Manager Console to generate DB and seed with data.
